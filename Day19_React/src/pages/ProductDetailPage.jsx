@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AppContext from "../context/appcontext";
 
 export default function ProductDetailPage() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const {addToCart} = useContext(AppContext);
 
   const getProduct = async () => {
     const req = await fetch(`https://dummyjson.com/products/${id}`);
@@ -30,6 +32,8 @@ export default function ProductDetailPage() {
           <p><strong>Brand:</strong> {product.brand}</p>
           <p><strong>Category:</strong> {product.category}</p>
           <p><strong>Dimensions:</strong> {product.dimensions.width} x {product.dimensions.height} x {product.dimensions.depth}</p>
+          <p><strong>Weight:</strong> {product.weight} lbs</p>
+          <button onClick={() => addToCart(product)} style={styles.button}>Add to Cart</button>
         </div>
       </div>
     </div>
