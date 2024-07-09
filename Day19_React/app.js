@@ -114,6 +114,35 @@ const categories = [
   "Electronics",
 ];
 
+const [cart, setCart] = useState([]);
+const addToCart = (elem) =>{
+  const isPresent = cart.findIndex((c1)=>c1.id === elem.id);
+  if(isPresent === -1){
+    const newCart = [...cart];
+    newCart.push({
+      id: elem.id,
+      title: elem.title,
+      price: elem.price,
+      count: 1
+    });
+    setCart(newCart);
+}else{
+  const newCart = cart.map((cartItem)=>{
+    if(cartItem.id === elem.id){
+      const newCartItem = {...cartItem};
+      newCartItem.count += 1;
+      return newCartItem;
+  }else return cartItem;
+  });
+  setCart(newCart);
+}
+}
+
+const contextValues = {
+  cart,
+  addToCart
+}
+
 const App = () => {
   const [searchText, setSearchText] = useState("");
   const router = createBrowserRouter([
@@ -142,6 +171,7 @@ const App = () => {
       element: <ProductDetailPage />,
     },
   ]);
+
   return (
     <div>
       <RouterProvider router={router} />

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AppContext from "../context/appcontext";
 
 export default function ProductCard({ product }) {
+  const { addToCart } = useContext(AppContext);
   return (
     <div style={styles.card}>
       <img src={product.thumbnail} alt={product.title} style={styles.image} />
@@ -9,6 +11,9 @@ export default function ProductCard({ product }) {
       <p>Price: ${product.price}</p>
       <p>{product.description}</p>
       <p>Availability: {product.stock > 0 ? "In Stock" : "Out of Stock"}</p>
+      <button onClick={() => addToCart(product)} disabled={product.stock <= 0}>
+        Add to Cart
+      </button>
       <Link to={`/search/products/${product.id}`}>More</Link>
     </div>
   );
@@ -20,7 +25,7 @@ const styles = {
     borderRadius: "8px",
     padding: "16px",
     margin: "8px",
-    width: "calc(25% - 16px)", 
+    width: "calc(25% - 16px)",
     boxSizing: "border-box",
   },
   image: {

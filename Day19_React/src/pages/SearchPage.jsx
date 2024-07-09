@@ -1,5 +1,4 @@
-// src/pages/SearchPage.js
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import CategoryBar from "../components/categoryBar";
 import Navbar from "../components/navbar";

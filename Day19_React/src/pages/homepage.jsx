@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useGetProducts from "../hooks/useGetProducts";
 
 const HomePage = (props) => {
-  const { setSearchText, categories, productInfoCards } = props;
+  const { setSearchText, categories } = props;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
   const products = useGetProducts();
@@ -50,7 +50,7 @@ const HomePage = (props) => {
         <div className="products-cards-container">
           {[...Array(4).keys()].map((elem) => (
             <ProductInfoCard
-            key={elem}
+              key={elem}
               data={filteredProducts.slice(elem * 4, elem * 4 + 4)}
             />
           ))}
