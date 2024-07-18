@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
+import AppContext from "../context/appcontext";
 
-export default function CategoryBar(props) {
-  const { categories } = props;
+export default function CategoryBar() {
+  const { categories } = useContext(AppContext);
 
   return (
     <div className="homepage-category-bar">

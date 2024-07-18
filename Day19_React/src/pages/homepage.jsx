@@ -5,13 +5,13 @@ import ProductInfoCard from "../components/ProductInfoCard";
 import { useNavigate } from "react-router-dom";
 import useGetProducts from "../hooks/useGetProducts";
 
-const HomePage = (props) => {
-  const { setSearchText, categories } = props;
+const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const navigate = useNavigate();
-  const products = useGetProducts();
+  const products = useGetProducts({isSearchTextDependent:false});
   const reqLength = 16;
   let cnt = 0;
+
   const filteredProducts = products.filter((ele, idx) => {
     if (Math.random() >= 0.5 || reqLength - cnt === products.length - idx) {
       if (cnt < reqLength) {
@@ -20,6 +20,7 @@ const HomePage = (props) => {
       } else return false;
     } else return false;
   });
+
   const images = [
     "https://images-eu.ssl-images-amazon.com/images/G/31/OHL/24/BAU/feb/PC_hero_1_2x_1._CB582889946_.jpg",
     "https://images-eu.ssl-images-amazon.com/images/G/31/OHL_HSS/3.PC-REC_hero_3000x1200-1day1._CB569789166_.jpg",
@@ -39,8 +40,8 @@ const HomePage = (props) => {
 
   return (
     <div className="homepage-root-container">
-      <Navbar setSearchText={setSearchText} openSearchPage={openSearchPage} />
-      <CategoryBar categories={categories} />
+      <Navbar openSearchPage={openSearchPage} />
+      <CategoryBar />
       <div className="homepage-body">
         <img
           src={images[currentImageIndex]}

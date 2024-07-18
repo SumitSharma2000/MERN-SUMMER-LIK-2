@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useGetProductById = (id) => {
+const useGetProductById = (id="") => {
     const [productInfo, setProductInfo] = useState({});
 
     const getProductById = async () => {
@@ -17,7 +17,7 @@ const useGetProductById = (id) => {
 
     useEffect(() => {
         getProductById();
-    }, []);
+    }, [id]);
 
     return productInfo;
 };

@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import AppContext from "../context/appcontext";
 
-const useGetProducts = ({isSearchTextDependent = true}) => {
+const useGetProducts = (params = {}) => {
   const {searchText} = useContext(AppContext)
   const [data, setData] = useState([]);
+  const {isSearchTextDependent = true} = params;
 
   const getData = async ({stx}) => {
     try {
