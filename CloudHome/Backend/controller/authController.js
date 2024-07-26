@@ -9,7 +9,7 @@ const getUserByEmail = async (email) => {
 const generateJWTToken = (obj) => {
   const token = jwt.sign(
     {
-      exp: 120,
+      exp: Math.floor(Date.now()/1000) + 60 * 60 * 24 * 7, // 7 days
       data: obj,
     },
     process.env.JWT_SECRET

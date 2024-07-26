@@ -1,29 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import LoginPage from "./src/pages/loginPage";
-import { createBrowserRouter , RouterProvider } from "react-router-dom";
-import SignupPage from "./src/pages/signupPage";
-import HomePage from "./src/pages/homePage";
+import { Provider} from "react-redux";
+import AppStore from './src/store/appStore'
+import AppRouter from "./appRouter";
 
 const App = () => {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage />,
-    },
-    {
-      path: "/login",
-      element: <LoginPage />,
-    },
-    {
-      path: "/signup",
-      element: <SignupPage />,
-    },
-  ]);
   return (
-    <div>
-        <RouterProvider router={router} />
-    </div>
+    <Provider store={AppStore}>
+       <AppRouter/>
+    </Provider>
   );
 };
 

@@ -4,7 +4,7 @@ const useSignup = () => {
 
   const navigate = useNavigate();
 
-  const signup = async ({ email, password }) => {
+  const signup = async ({ firstName ,email, password }) => {
     try {
       const response = await fetch(
         `${process.env.BACKEND_URL}/api/v1/auth/signup`,
@@ -13,7 +13,7 @@ const useSignup = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ email, password }),
+          body: JSON.stringify({ firstName, email, password }),
         }
       );
       const data = await response.json();

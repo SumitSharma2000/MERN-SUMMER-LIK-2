@@ -1,0 +1,31 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; 
+    background-color: rgba(254, 254, 254, 0.8); /* Semi-transparent background */
+    color: #020101;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-left-item h3 {
+    margin: 0;
+    font-size: 24px; 
+}
+
+.navbar-right-items {
+    display: flex;
+    gap: 20px; 
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: #0c0c0c;
+    font-size: 18px; 
+}
+
+.navbar-link:hover {
+    color: #1d480e;
+}

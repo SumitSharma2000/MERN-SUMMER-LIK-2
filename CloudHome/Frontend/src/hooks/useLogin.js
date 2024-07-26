@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { slicelogin } from "../store/slice/authSlice";
 const useLogin = () => {
-
-  const navigate = useNavigate();
+  const dispatch =  useDispatch();
 
   const login = async ({ email, password }) => {
     try {
@@ -18,7 +18,7 @@ const useLogin = () => {
       const data = await response.json();
       console.log(data);
       if (data.status === "success") {
-        navigate(`/`);
+        dispatch(slicelogin(data));
       } else {
         alert(data.message);
       }
